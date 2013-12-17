@@ -1,0 +1,43 @@
+<div id="alive-today" style="width: 560px; height: 300px;"></div>
+
+<script>
+var popData =  <%= @name.us_population_alive %>
+var totalData = 100 - popData
+$(function () {
+    $('#alive-today').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Percent of the US Population with Your Name'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.7f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.7f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['% with name <%= @name.given_name %>', popData],
+                ['US % with a different name',  totalData ],
+            ]
+        }]
+    });
+});
+   
+</script>
+
