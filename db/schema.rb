@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20131216175657) do
     t.text     "us_birth_percentage"
     t.text     "us_population_alive"
     t.text     "most_commone_age"
-    t.text     "notable_people"
+    t.text     "alternative_names"
     t.text     "etymology"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -8,7 +8,7 @@ class CreateNames < ActiveRecord::Migration
       t.text :us_birth_percentage
       t.text :us_population_alive
       t.text :most_commone_age
-      t.text :notable_people
+      t.text :alternative_names
       t.text :etymology
       t.timestamps
     end
