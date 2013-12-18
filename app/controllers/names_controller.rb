@@ -21,7 +21,8 @@ class NamesController < ApplicationController
 	end
 
 	def show
-		@name = Name.find(params[:id])
+		name = Name.find(params[:id])
+		gon.nameInfo = name
 	end
 	
 end
