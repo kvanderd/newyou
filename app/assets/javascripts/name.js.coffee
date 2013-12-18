@@ -12,7 +12,7 @@ $ ->
       text: "Living US Population With Your Name"
 
     subtitle:
-      text: "Source: Wolfram Alpha"
+      text: "Source: US Birth Data"
 
       plotOptions: [
         pie: [
@@ -48,7 +48,7 @@ $ ->
       text: "Birth Rate With Your Name"
 
     subtitle:
-      text: "Source: Wolfram Alpha"
+      text: "Source: 2012 US birth data"
 
       plotOptions: [
         pie: [
