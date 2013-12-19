@@ -24,5 +24,9 @@ class NamesController < ApplicationController
 		name = Name.find(params[:id])
 		gon.nameInfo = name
 	end
+
+	def states
+		ap params
+	end
 	
 end

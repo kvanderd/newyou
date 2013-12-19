@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131216175657) do
+ActiveRecord::Schema.define(version: 20131218233212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20131216175657) do
     t.text     "etymology"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "states", force: true do |t|
+    t.string  "name"
+    t.string  "abbreviation"
+    t.float   "women_percent_income"
+    t.float   "percent_college_degree"
+    t.integer "per_capita_income"
   end
 
 end

@@ -1,10 +1,9 @@
 = render "names/info"
-/ = render "names/alive_today.js.erb"
 
-/= @name.us_population_alive.class
-/= @name.us_population_alive
 .row.span_12
 	.span_6
 		%div#alive-today
 	.span_6
 		%div#us_births
+
+//= render "names/state_form" 

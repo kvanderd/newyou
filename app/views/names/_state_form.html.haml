@@ -1,0 +1,5 @@
+.row.span_12.text-center
+	%h5 Discover Information About Where You Live
+	=form_for :state, class: "form-control love" do |t|
+		=t.text_field :name, placeholder: "Enter Your State"
+		=t.submit "Go", class: "btn btn-info"
