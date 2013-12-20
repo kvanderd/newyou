@@ -96,7 +96,6 @@ class Users
   
   user = new Users(gon.nameInfo.given_name, gon.nameInfo.interpretation, gon.nameInfo.alternative_names, gon.nameInfo.etymology, gon.nameInfo.us_population_alive, gon.nameInfo.us_births)
 
-  
 
 
 

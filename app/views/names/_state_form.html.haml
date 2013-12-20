@@ -1,5 +1,5 @@
-.row.span_12.text-center
+.row.span_12.text-center.state_form
 	%h5 Discover Information About Where You Live
-	=form_for :state, class: "form-control love" do |t|
+	=form_for :state, :url => states_path, remote: :true, method: :get, class: "form-control" do |t|
 		=t.text_field :name, placeholder: "Enter Your State"
 		=t.submit "Go", class: "btn btn-info"

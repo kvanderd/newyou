@@ -27,6 +27,17 @@ class NamesController < ApplicationController
 
 	def states
 		ap params
+    puts "this is the state" * 9
+		ap params[:state][:name]
+		@state = State.where(name: params[:state][:name])
+		# gon.state = @state
+		# render :partial => 'test', :object => @state
+		respond_to do |format|
+    # format.html { redirect_to tasks_url }
+	    format.js 
+	    # format.json { render :json => gon.stateInfo }
+	  end
+	
 	end
 	
 end

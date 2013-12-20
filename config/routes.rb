@@ -5,6 +5,8 @@ Newyou::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'names#new'
   resources :names
+  get :states, :to => "names#states"
+
   # resources :states, only: [:show]
 
   # Example of regular route:
