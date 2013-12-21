@@ -2,19 +2,23 @@
 
 
 $ ->
+
   $("#name_given_name").focus()
-  $("#alive-today").highcharts
+  $("#alive_today").highcharts
     chart:
         plotBackgroundColor: null,
         plotBorderWidth: null,
-        plotShadow: false
+        plotShadow: false,
 
     title:
-      color: "#30beda"
       text: "Living US Population With Your Name"
+      style:
+        color: "#6AB238"
 
     subtitle:
       text: "Source: US Birth Data"
+      style:
+        color: "#081206"
 
       plotOptions: [
         pie: [
@@ -35,9 +39,9 @@ $ ->
     series: [
       type: 'pie'
       data: [
-            ["#{user.us_population_alive} % named #{user.name}", user.us_population_alive]
+            ["#{user.us_population_alive} % Living US Population named: #{user.name}", user.us_population_alive]
             [" #{user.populationRemainder()}% With Other Name", user.populationRemainder()]
-            ["Most Common Name in US: Michael 1.6%", 1.6]
+            ["Most common living name: Michael: 1.6%", 1.6]
         ]
     ]
 
@@ -49,9 +53,13 @@ $ ->
 
     title:
       text: "Birth Rate With Your Name"
+      style:
+        color: "#6AB238"
 
     subtitle:
       text: "Source: 2012 US birth data"
+      style:
+        color: "#081206"
 
       plotOptions: [
         pie: [
@@ -72,11 +80,36 @@ $ ->
     series: [
       type: 'pie'
       data: [
-            ["#{user.us_births} % named #{user.name}", user.us_births]
+            ["#{user.us_births}% of US births are named #{user.name}", user.us_births]
             ["#{user.birthRemainder()}% Born With Other Name", user.birthRemainder()]
-            ["Most Common Baby Name 2012 Sofia: 1.6%", 1.6]
+            ["Most Common Baby Name of 2012 Sofia: 1.6%", 1.6]
         ]
     ]
+
+  # $('#bar-sample').highcharts
+  #   chart: 
+  #     type: 'bar'
+    
+  #   title: 
+  #     text: 'Name Popularity In US'
+      
+  #   xAxis: 
+  #     categories: ['Apples', 'Bananas', 'Oranges']
+      
+  #   yAxis: 
+  #     title: 
+  #       text: 'US Population By Percentage'
+          
+  #   series: [
+  #     name: 'Jane',
+  #     data: [1, 0, 4]
+
+  #     name: 'John',
+  #     data: [5, 7, 3]
+  #   ]
+        
+    
+
 
 
   user.displayName()
@@ -85,10 +118,11 @@ class Users
     constructor: (@name, @interpretation, @alternative_names, @etymology, @us_population_alive, @us_births) ->
 
     populationRemainder: ->
-      (100 - (Number @us_population_alive)) -  1.6
+      ((100 - (Number @us_population_alive)) -  1.6)
+
 
     birthRemainder: ->
-      (100 - (Number @us_births)) - 1.6
+      ((100 - (Number @us_births)) - 1.6)
 
     displayName: ->
       $('#interpretation').append(@interpretation)
