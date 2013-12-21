@@ -1,4 +1,9 @@
-.page-header.text-center 
-	%h3 Let Your Data Grow
-	%p Let's start with your first name...
-=render "names/form"
+.row.text-center.col-xs-12
+	%h3#main_page_header Watch Your Data Grow
+	%p#intro Let's start with your first name...
+.row
+	=render "names/form"
+
+#object.pullUp
+
+= render "/layouts/footer"

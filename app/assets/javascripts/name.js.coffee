@@ -2,6 +2,7 @@
 
 
 $ ->
+  $("#name_given_name").focus()
   $("#alive-today").highcharts
     chart:
         plotBackgroundColor: null,
@@ -9,6 +10,7 @@ $ ->
         plotShadow: false
 
     title:
+      color: "#30beda"
       text: "Living US Population With Your Name"
 
     subtitle:
@@ -22,19 +24,20 @@ $ ->
                 enabled: true
                 color: '#000000'
                 connectorColor: '#000000'
-                format: '<b>{point.name}</b>: {point.percentage:.7f} %'
+                format: '<b>{point.name}</b>: {point.percentage:.5f} %'
             ]
         ]
       ]
 
     tooltip:
-      pointFomrat: 'pointFormat: {series.name}: <b>{point.percentage:.7f}%</b>'
+      pointFomrat: 'pointFormat: {series.name}: <b>{point.percentage:.5f}%</b>'
 
     series: [
       type: 'pie'
       data: [
             ["#{user.us_population_alive} % named #{user.name}", user.us_population_alive]
             [" #{user.populationRemainder()}% With Other Name", user.populationRemainder()]
+            ["Most Common Name in US: Michael 1.6%", 1.6]
         ]
     ]
 
@@ -70,7 +73,8 @@ $ ->
       type: 'pie'
       data: [
             ["#{user.us_births} % named #{user.name}", user.us_births]
-            ["#{user.birthRemainder()}% With Other Name", user.birthRemainder()]
+            ["#{user.birthRemainder()}% Born With Other Name", user.birthRemainder()]
+            ["Most Common Baby Name 2012 Sofia: 1.6%", 1.6]
         ]
     ]
 
@@ -81,10 +85,10 @@ class Users
     constructor: (@name, @interpretation, @alternative_names, @etymology, @us_population_alive, @us_births) ->
 
     populationRemainder: ->
-      (100 - (Number @us_population_alive))
+      (100 - (Number @us_population_alive)) -  1.6
 
     birthRemainder: ->
-      (100 - (Number @us_births))
+      (100 - (Number @us_births)) - 1.6
 
     displayName: ->
       $('#interpretation').append(@interpretation)

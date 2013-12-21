@@ -1,5 +1,4 @@
-.row.span_12
-.text-center
-	=form_for @name, class: "form-control" do |t|
+.col-xs-12.text-center
+	=form_for @name do |t|
 		=t.text_field :given_name, placeholder: "Your First Name"
-		=t.submit "Push", class: "btn btn-info"
+		=t.submit "Grow", class: "btn-info"

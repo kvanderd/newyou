@@ -2,6 +2,7 @@
 var Users, user;
 
 $(function() {
+  $("#name_given_name").focus();
   $("#alive-today").highcharts({
     chart: {
       plotBackgroundColor: null,
@@ -9,6 +10,7 @@ $(function() {
       plotShadow: false
     },
     title: {
+      color: "#30beda",
       text: "Living US Population With Your Name"
     },
     subtitle: {
@@ -24,7 +26,7 @@ $(function() {
                   enabled: true,
                   color: '#000000',
                   connectorColor: '#000000',
-                  format: '<b>{point.name}</b>: {point.percentage:.7f} %'
+                  format: '<b>{point.name}</b>: {point.percentage:.5f} %'
                 }
               ]
             }
@@ -33,12 +35,12 @@ $(function() {
       ]
     },
     tooltip: {
-      pointFomrat: 'pointFormat: {series.name}: <b>{point.percentage:.7f}%</b>'
+      pointFomrat: 'pointFormat: {series.name}: <b>{point.percentage:.5f}%</b>'
     },
     series: [
       {
         type: 'pie',
-        data: [["" + user.us_population_alive + " % named " + user.name, user.us_population_alive], [" " + (user.populationRemainder()) + "% With Other Name", user.populationRemainder()]]
+        data: [["" + user.us_population_alive + " % named " + user.name, user.us_population_alive], [" " + (user.populationRemainder()) + "% With Other Name", user.populationRemainder()], ["Most Common Name in US: Michael 1.6%", 1.6]]
       }
     ]
   });
@@ -78,7 +80,7 @@ $(function() {
     series: [
       {
         type: 'pie',
-        data: [["" + user.us_births + " % named " + user.name, user.us_births], ["" + (user.birthRemainder()) + "% With Other Name", user.birthRemainder()]]
+        data: [["" + user.us_births + " % named " + user.name, user.us_births], ["" + (user.birthRemainder()) + "% Born With Other Name", user.birthRemainder()], ["Most Common Baby Name 2012 Sofia: 1.6%", 1.6]]
       }
     ]
   });
@@ -96,11 +98,11 @@ Users = (function() {
   }
 
   Users.prototype.populationRemainder = function() {
-    return 100 - (Number(this.us_population_alive));
+    return (100 - (Number(this.us_population_alive))) - 1.6;
   };
 
   Users.prototype.birthRemainder = function() {
-    return 100 - (Number(this.us_births));
+    return (100 - (Number(this.us_births))) - 1.6;
   };
 
   Users.prototype.displayName = function() {
